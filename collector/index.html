@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Keystroke Collector</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>🔐 Keystroke Data Collector</h1>
+
+        <!-- Step 1: Get user name -->
+        <div id="step-name">
+            <p>Enter your name before we begin:</p>
+            <input type="text" id="username" placeholder="Your name" />
+            <button onclick="startSession()">Start</button>
+        </div>
+
+        <!-- Step 2: Typing area (hidden until name entered) -->
+        <div id="step-typing" style="display:none;">
+            <p id="attempt-counter">Attempt: 1 / 15</p>
+
+            <div class="sentence-box">
+                <p id="target-sentence"></p>
+            </div>
+
+            <textarea 
+                id="typing-area" 
+                rows="3" 
+                placeholder="Type the sentence above here..."
+                autocomplete="off"
+                autocorrect="off"
+                autocapitalize="off"
+                spellcheck="false">
+            </textarea>
+
+            <button onclick="submitAttempt()">Submit Attempt ✅</button>
+            <p id="status-msg"></p>
+        </div>
+
+        <!-- Step 3: Done screen -->
+        <div id="step-done" style="display:none;">
+            <h2>✅ All done! Thank you.</h2>
+            <button onclick="downloadData()">Download My Data 💾</button>
+        </div>
+    </div>
+
+    <script src="logger.js"></script>
+</body>
+</html>

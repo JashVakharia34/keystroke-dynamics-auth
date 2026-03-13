@@ -1,0 +1,93 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #0f0f0f;
+    color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: #1a1a1a;
+    padding: 40px;
+    border-radius: 16px;
+    width: 600px;
+    box-shadow: 0 0 40px rgba(0,255,150,0.1);
+}
+
+h1 {
+    margin-bottom: 24px;
+    color: #00ff96;
+}
+
+.sentence-box {
+    background: #111;
+    border-left: 4px solid #00ff96;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+}
+
+textarea {
+    width: 100%;
+    padding: 12px;
+    background: #111;
+    color: #fff;
+    border: 1px solid #333;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-bottom: 16px;
+    resize: none;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #00ff96;
+}
+
+input[type="text"] {
+    padding: 10px;
+    width: 70%;
+    background: #111;
+    color: #fff;
+    border: 1px solid #333;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-right: 8px;
+}
+
+button {
+    padding: 10px 20px;
+    background: #00ff96;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #00cc78;
+}
+
+#attempt-counter {
+    margin-bottom: 12px;
+    color: #888;
+    font-size: 14px;
+}
+
+#status-msg {
+    margin-top: 12px;
+    color: #00ff96;
+    font-size: 14px;
+}
