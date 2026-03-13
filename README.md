@@ -1,4 +1,4 @@
-# 🔐 Keystroke Dynamics — Behavioral Biometric Authentication
+# 🔐 Keystroke Dynamics: Behavioral Biometric Authentication
 
 > Authenticating users based purely on **how** they type, not what they type.
 
