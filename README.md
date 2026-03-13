@@ -3,7 +3,7 @@
 > Authenticating users based purely on **how** they type, not what they type.
 
 ## 🧠 What is this?
-Every person has a unique typing rhythm — dwell times, flight times, 
+Every person has a unique typing rhythm dwell times, flight times, 
 digraph patterns. This project builds a real-time authentication system 
 that identifies individuals from their keystroke dynamics alone.
 
