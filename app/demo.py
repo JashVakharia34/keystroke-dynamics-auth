@@ -389,9 +389,17 @@ section[data-testid="stFileUploader"] > div {
 st.markdown("""
 <div class="hero">
     <div class="hero-badge">🧬 &nbsp; Behavioral Biometrics</div>
-    <h1 class="hero-title">
-        <span class="key">Key</span><span class="dna">DNA</span>
-    </h1>
+    <div style="
+        font-family: 'DM Sans', sans-serif;
+        font-size: 96px;
+        font-weight: 700;
+        line-height: 1.0;
+        margin: 0 0 12px;
+        color: #2d2a35;
+        text-align: center;
+    ">
+        Key<span style="color: #e07a8f;">DNA</span>
+    </div>
     <p class="hero-sub">identifying humans from typing rhythm alone</p>
 </div>
 """, unsafe_allow_html=True)
