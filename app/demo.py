@@ -317,10 +317,7 @@ with tab1:
     st.markdown("""
     <span style="font-family:'Space Mono',monospace;font-size:11px;color:#475569;">
     Upload your keystroke JSON to identify yourself.
-    Collect data at:
-    <a href="https://jashvakharia34.github.io/keystroke-dynamics-auth"
-       style="color:#6366f1;">
-    jashvakharia34.github.io/keystroke-dynamics-auth</a>
+    New user? Head to the <strong style="color:#818cf8;">➕ Enroll</strong> tab first.
     </span>
     """, unsafe_allow_html=True)
     st.markdown("<br>", unsafe_allow_html=True)
