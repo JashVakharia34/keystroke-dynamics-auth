@@ -144,123 +144,232 @@ def get_enrolled_users():
 # ── Styling ───────────────────────────────────────────
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Clash+Display:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap');
+
 * { box-sizing: border-box; }
+
 [data-testid="stAppViewContainer"] {
-    background: #080810;
+    background: #f5f0eb;
     background-image:
-        radial-gradient(ellipse at 20% 20%, rgba(99,102,241,0.08) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 80%, rgba(16,185,129,0.06) 0%, transparent 50%);
+        radial-gradient(ellipse at 10% 10%, rgba(255,183,197,0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 90%, rgba(183,220,255,0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(198,255,209,0.15) 0%, transparent 60%);
 }
 [data-testid="stHeader"] { background: transparent; }
 .main .block-container { padding-top: 2rem; max-width: 780px; }
-h1,h2,h3 { font-family: 'Syne', sans-serif !important; letter-spacing: -0.02em; }
-p,div,span,label { font-family: 'Space Mono', monospace !important; font-size: 13px; }
+h1,h2,h3 { font-family: 'DM Sans', sans-serif !important; letter-spacing: -0.02em; }
+p,div,span,label { font-family: 'DM Mono', monospace !important; font-size: 13px; }
 
-.hero { text-align: center; padding: 40px 0 24px; }
+/* ── Hero ── */
+
+.hero {
+    text-align: center;
+    padding: 56px 0 32px;
+}
 .hero-badge {
     display: inline-block;
-    background: rgba(99,102,241,0.15);
-    border: 1px solid rgba(99,102,241,0.4);
-    color: #818cf8;
-    font-family: 'Space Mono', monospace;
-    font-size: 11px; letter-spacing: 0.15em;
-    padding: 6px 16px; border-radius: 100px;
-    margin-bottom: 20px; text-transform: uppercase;
+    background: rgba(255,183,197,0.3);
+    border: 1px solid rgba(255,140,170,0.4);
+    color: #c2607a;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px; letter-spacing: 0.15em;
+    padding: 8px 20px; border-radius: 100px;
+    margin-bottom: 24px; text-transform: uppercase;
 }
 .hero-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 52px; font-weight: 800;
-    color: #f8fafc; line-height: 1.1; margin: 0 0 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 72px; font-weight: 700;
+    line-height: 1.0; margin: 0 0 12px;
+    color: #2d2a35;
 }
-.hero-title span {
-    background: linear-gradient(135deg, #6366f1, #10b981);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text; font-family: 'Syne', sans-serif;
+.hero-title .key {
+    color: #2d2a35;
 }
-.hero-sub { color: #64748b; font-size: 13px; font-family: 'Space Mono', monospace; margin: 0; }
+.hero-title .dna {
+    color: #e07a8f;
+}
+.hero-sub {
+    font-size: 14px;
+    margin-top: 8px;
+    color: #b8b0c8;
+    letter-spacing: 0.05em;
+    font-family: 'DM Mono', monospace;
+}
+
+/* ── Stats bar ── */
 
 .stats-bar {
-    display: flex; gap: 1px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 16px; overflow: hidden; margin: 24px 0;
+    display: flex; gap: 8px;
+    margin: 24px 0;
 }
-.stat-item { flex: 1; padding: 18px 12px; text-align: center; background: rgba(8,8,16,0.8); }
-.stat-num  { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: #f8fafc; display: block; }
-.stat-num.green  { color: #10b981; }
-.stat-num.indigo { color: #818cf8; }
-.stat-label { font-family: 'Space Mono', monospace; font-size: 10px; color: #475569; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; display: block; }
+.stat-item {
+    flex: 1; padding: 18px 12px; text-align: center;
+    background: rgba(255,255,255,0.7);
+    border: 1px solid rgba(255,255,255,0.9);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    transition: transform 0.2s;
+}
+.stat-item:hover { transform: translateY(-2px); }
+.stat-num { font-family: 'DM Sans', sans-serif; font-size: 22px; font-weight: 700; color: #2d2a35; display: block; }
+.stat-num.pink   { color: #e07a8f; }
+.stat-num.blue   { color: #7aace0; }
+.stat-num.green  { color: #7ac49e; }
+.stat-label { font-family: 'DM Mono', monospace; font-size: 10px; color: #b8b0c8; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; display: block; }
+
+/* ── Result cards ── */
 
 .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
 .result-card {
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 20px; padding: 24px; position: relative; overflow: hidden;
+    background: rgba(255,255,255,0.8);
+    border: 1px solid rgba(255,255,255,0.95);
+    border-radius: 20px; padding: 24px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    position: relative; overflow: hidden;
+    backdrop-filter: blur(10px);
 }
 .result-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, #6366f1, #10b981);
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, #f4a7b9, #a8d8ea);
 }
-.card-model { font-family: 'Space Mono', monospace; font-size: 10px; color: #475569; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 12px; }
-.card-name  { font-family: 'Syne', sans-serif; font-size: 30px; font-weight: 800; color: #f8fafc; margin: 0 0 6px; }
-.card-conf  { font-family: 'Space Mono', monospace; font-size: 12px; color: #10b981; }
-.conf-bar   { height: 3px; background: rgba(255,255,255,0.06); border-radius: 100px; margin-top: 10px; overflow: hidden; }
-.conf-fill  { height: 100%; background: linear-gradient(90deg, #6366f1, #10b981); border-radius: 100px; }
+.card-model { font-family: 'DM Mono', monospace; font-size: 10px; color: #b8b0c8; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 12px; }
+.card-name  { font-family: 'DM Sans', sans-serif; font-size: 30px; font-weight: 700; color: #2d2a35; margin: 0 0 6px; }
+.card-conf  { font-family: 'DM Mono', monospace; font-size: 12px; color: #7ac49e; }
+.conf-bar   { height: 4px; background: rgba(0,0,0,0.06); border-radius: 100px; margin-top: 10px; overflow: hidden; }
+.conf-fill  { height: 100%; background: linear-gradient(90deg, #f4a7b9, #a8d8ea); border-radius: 100px; }
+
+/* ── Banners ── */
 
 .agree-banner {
-    background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.25);
-    border-radius: 12px; padding: 14px 20px; color: #10b981;
-    font-family: 'Space Mono', monospace; font-size: 12px; text-align: center; margin: 8px 0 20px;
+    background: rgba(122,196,158,0.12);
+    border: 1px solid rgba(122,196,158,0.35);
+    border-radius: 12px; padding: 14px 20px; color: #4a9e7a;
+    font-family: 'DM Mono', monospace; font-size: 12px;
+    text-align: center; margin: 8px 0 20px;
 }
 .disagree-banner {
-    background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.25);
-    border-radius: 12px; padding: 14px 20px; color: #f59e0b;
-    font-family: 'Space Mono', monospace; font-size: 12px; text-align: center; margin: 8px 0 20px;
+    background: rgba(244,167,185,0.12);
+    border: 1px solid rgba(244,167,185,0.35);
+    border-radius: 12px; padding: 14px 20px; color: #c2607a;
+    font-family: 'DM Mono', monospace; font-size: 12px;
+    text-align: center; margin: 8px 0 20px;
 }
+
+/* ── Metrics ── */
 
 .metrics-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin: 20px 0; }
 .metric-card {
-    background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.7);
+    border: 1px solid rgba(255,255,255,0.95);
     border-radius: 14px; padding: 16px; text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
 }
-.metric-val { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; color: #f8fafc; display: block; }
-.metric-lbl { font-family: 'Space Mono', monospace; font-size: 10px; color: #475569; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; display: block; }
+.metric-val { font-family: 'DM Sans', sans-serif; font-size: 20px; font-weight: 700; color: #2d2a35; display: block; }
+.metric-lbl { font-family: 'DM Mono', monospace; font-size: 10px; color: #b8b0c8; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; display: block; }
 
-.section-header { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; color: #f8fafc; margin: 28px 0 14px; }
-.divider { height: 1px; background: rgba(255,255,255,0.05); margin: 28px 0; }
+/* ── Section headers ── */
+
+.section-header { font-family: 'DM Sans', sans-serif; font-size: 18px; font-weight: 600; color: #2d2a35; margin: 28px 0 14px; }
+.divider { height: 1px; background: rgba(0,0,0,0.06); margin: 28px 0; }
+
+/* ── Enroll steps ── */
 
 .enroll-step {
-    background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 16px; padding: 24px; margin-bottom: 16px;
+    background: rgba(255,255,255,0.7);
+    border: 1px solid rgba(255,255,255,0.95);
+    border-radius: 16px; padding: 22px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
 }
-.enroll-step-num {
-    font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700;
-    color: #6366f1; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 8px;
-}
-.enroll-step-title { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; color: #f8fafc; margin-bottom: 4px; }
-.enroll-step-desc  { font-family: 'Space Mono', monospace; font-size: 11px; color: #475569; }
+.enroll-step-num   { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; color: #e07a8f; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 6px; }
+.enroll-step-title { font-family: 'DM Sans', sans-serif; font-size: 18px; font-weight: 600; color: #2d2a35; margin-bottom: 4px; }
+.enroll-step-desc  { font-family: 'DM Mono', monospace; font-size: 11px; color: #9e97a8; }
+
+/* ── Success ── */
 
 .success-box {
-    background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.3);
-    border-radius: 20px; padding: 40px; text-align: center; margin: 20px 0;
+    background: rgba(122,196,158,0.08);
+    border: 1px solid rgba(122,196,158,0.3);
+    border-radius: 20px; padding: 48px 40px;
+    text-align: center; margin: 20px 0;
 }
 .success-icon  { font-size: 48px; margin-bottom: 16px; }
-.success-title { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; color: #10b981; margin-bottom: 8px; }
-.success-sub   { font-family: 'Space Mono', monospace; font-size: 12px; color: #475569; }
+.success-title { font-family: 'DM Sans', sans-serif; font-size: 28px; font-weight: 700; color: #4a9e7a; margin-bottom: 8px; }
+.success-sub   { font-family: 'DM Mono', monospace; font-size: 12px; color: #9e97a8; line-height: 1.8; }
+
+/* ── User cards ── */
 
 .user-card {
-    background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.7);
+    border: 1px solid rgba(255,255,255,0.95);
     border-radius: 14px; padding: 16px 20px;
     display: flex; align-items: center; justify-content: space-between;
     margin-bottom: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
 }
-.user-name   { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; color: #f8fafc; }
-.user-meta   { font-family: 'Space Mono', monospace; font-size: 10px; color: #475569; margin-top: 2px; }
-.user-badge  {
-    background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3);
-    color: #818cf8; font-family: 'Space Mono', monospace;
-    font-size: 10px; padding: 4px 10px; border-radius: 100px;
+.user-name  { font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 600; color: #2d2a35; }
+.user-meta  { font-family: 'DM Mono', monospace; font-size: 10px; color: #b8b0c8; margin-top: 2px; }
+.user-badge {
+    background: rgba(244,167,185,0.2);
+    border: 1px solid rgba(244,167,185,0.4);
+    color: #c2607a; font-family: 'DM Mono', monospace;
+    font-size: 10px; padding: 4px 12px; border-radius: 100px;
+}
+
+/* ── File uploader ── */
+[data-testid="stFileUploader"] {
+    background: rgba(255,255,255,0.6) !important;
+    border: 1.5px dashed rgba(244,167,185,0.5) !important;
+    border-radius: 16px !important;
+}
+[data-testid="stFileUploader"]:hover {
+    border-color: rgba(244,167,185,0.8) !important;
+    background: rgba(255,255,255,0.8) !important;
+}
+
+/* ── Tabs ── */
+[data-testid="stTabs"] button {
+    font-family: 'DM Mono', monospace !important;
+    color: #9e97a8 !important;
+}
+[data-testid="stTabs"] button[aria-selected="true"] {
+    color: #2d2a35 !important;
+    border-bottom-color: #f4a7b9 !important;
+}
+
+/* ── Buttons ── */
+[data-testid="stButton"] button {
+    font-family: 'DM Mono', monospace !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba(0,0,0,0.08) !important;
+    background: rgba(255,255,255,0.8) !important;
+    color: #2d2a35 !important;
+}
+[data-testid="stButton"] button[kind="primary"] {
+    background: linear-gradient(135deg, #f4a7b9, #a8d8ea) !important;
+    color: #2d2a35 !important;
+    border: none !important;
+    font-weight: 600 !important;
+}
+
+/* ── Text input ── */
+[data-testid="stTextInput"] input {
+    background: rgba(255,255,255,0.8) !important;
+    border: 1px solid rgba(0,0,0,0.08) !important;
+    border-radius: 10px !important;
+    color: #2d2a35 !important;
+    font-family: 'DM Mono', monospace !important;
+}
+
+/* ── Text area ── */
+[data-testid="stTextArea"] textarea {
+    background: rgba(255,255,255,0.8) !important;
+    border: 1px solid rgba(0,0,0,0.08) !important;
+    border-radius: 10px !important;
+    color: #2d2a35 !important;
+    font-family: 'DM Mono', monospace !important;
 }
 
 #MainMenu, footer, header { visibility: hidden; }
@@ -270,8 +379,10 @@ p,div,span,label { font-family: 'Space Mono', monospace !important; font-size: 1
 # ── Hero ──────────────────────────────────────────────
 st.markdown("""
 <div class="hero">
-    <div class="hero-badge">🧬 Behavioral Biometrics</div>
-    <h1 class="hero-title">Key<span>DNA</span></h1>
+    <div class="hero-badge">🧬 &nbsp; Behavioral Biometrics</div>
+    <h1 class="hero-title">
+        <span class="key">Key</span><span class="dna">DNA</span>
+    </h1>
     <p class="hero-sub">identifying humans from typing rhythm alone</p>
 </div>
 """, unsafe_allow_html=True)
@@ -284,7 +395,7 @@ n_samples = n_users * 15
 st.markdown(f"""
 <div class="stats-bar">
     <div class="stat-item">
-        <span class="stat-num indigo">{n_users}</span>
+        <span class="stat-num blue">{n_users}</span>
         <span class="stat-label">Enrolled Users</span>
     </div>
     <div class="stat-item">
@@ -296,7 +407,7 @@ st.markdown(f"""
         <span class="stat-label">Training Samples</span>
     </div>
     <div class="stat-item">
-        <span class="stat-num green">98.67%</span>
+        <span class="stat-num pink">98.67%</span>
         <span class="stat-label">SVM Accuracy</span>
     </div>
     <div class="stat-item">
@@ -426,11 +537,11 @@ with tab1:
         fig = px.bar(
             proba_df.melt(id_vars='User', var_name='Model', value_name='Confidence %'),
             x='User', y='Confidence %', color='Model', barmode='group',
-            color_discrete_map={'SVM': '#6366f1', 'Random Forest': '#10b981'},
+            color_discrete_map={'SVM': '#f4a7b9', 'Random Forest': '#a8d8ea'},
         )
         fig.update_layout(
-            plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)',
-            font=dict(family='Space Mono', color='#64748b', size=11),
+            plot_bgcolor='rgba(255,255,255,0)', paper_bgcolor='rgba(255,255,255,0)',
+            font=dict(family='DM Mono', color='#9e97a8', size=11),
             legend=dict(bgcolor='rgba(0,0,0,0)'),
             xaxis=dict(showgrid=False, title=None),
             yaxis=dict(showgrid=True, gridcolor='rgba(255,255,255,0.04)', title=None),
@@ -547,7 +658,7 @@ with tab2:
             }}
             #typing-area {{
                 width:100%; padding:12px;
-                background:#1a1a1a; color:white;
+                background:#fff; color:#2d2a35;
                 font-size:15px; border:2px solid #6366f1;
                 border-radius:10px; font-family:'Space Mono',monospace;
                 box-sizing:border-box; resize:none;
