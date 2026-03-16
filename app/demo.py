@@ -178,8 +178,8 @@ p,div,span,label { font-family: 'DM Mono', monospace !important; font-size: 13px
     margin-bottom: 24px; text-transform: uppercase;
 }
 .hero-title {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 72px; font-weight: 700;
+    font-size: 96px;
+    font-weight: 700;
     line-height: 1.0; margin: 0 0 12px;
     color: #2d2a35;
 }
@@ -327,6 +327,15 @@ p,div,span,label { font-family: 'DM Mono', monospace !important; font-size: 13px
 [data-testid="stFileUploader"]:hover {
     border-color: rgba(244,167,185,0.8) !important;
     background: rgba(255,255,255,0.8) !important;
+}
+[data-testid="stFileDropzoneInstructions"] {
+    color: #9e97a8 !important;
+}
+section[data-testid="stFileUploader"] > div {
+    background: rgba(255,255,255,0.8) !important;
+    border: 1.5px dashed rgba(244,167,185,0.5) !important;
+    border-radius: 16px !important;
+    color: #9e97a8 !important;
 }
 
 /* ── Tabs ── */
