@@ -398,7 +398,7 @@ st.markdown("""
         color: #2d2a35;
         text-align: center;
     ">
-        Key<span style="color: #e07a8f;">DNA</span>
+        Key<span style="color: #e07a8f; font-size: 96px; font-family: 'DM Sans', sans-serif; font-weight: 700;">DNA</span>
     </div>
     <p class="hero-sub">identifying humans from typing rhythm alone</p>
 </div>
